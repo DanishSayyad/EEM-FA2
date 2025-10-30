@@ -32,16 +32,16 @@
 
         .infographic-container {
             width: 210mm;
-            height: 297mm;
+            min-height: 297mm;
             background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
             box-shadow: 0 15px 60px rgba(0, 0, 0, 0.4);
-            overflow: hidden;
+            overflow: visible;
             position: relative;
         }
 
         /* Header Section */
         .header {
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+            background: linear-gradient(135deg, #ED1C24 0%, #c41519 50%, #a31116 100%);
             color: white;
             padding: 20px 25px;
             display: flex;
@@ -66,11 +66,14 @@
         }
 
         .amd-logo {
-            font-size: 48px;
-            font-weight: 900;
-            color: #ED1C24;
-            letter-spacing: 8px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            height: 50px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .amd-logo-img {
+            height: 100%;
+            width: auto;
         }
 
         .tagline {
@@ -86,21 +89,11 @@
             z-index: 1;
         }
 
-        .header-stat {
-            margin-bottom: 4px;
-        }
-
-        .header-stat-value {
-            color: #ED1C24;
-            font-size: 16px;
-            font-weight: 900;
-            display: inline-block;
-            margin-right: 5px;
-        }
-
-        .header-stat-label {
-            font-size: 8px;
-            opacity: 0.8;
+        .header-info {
+            margin-bottom: 6px;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
         }
 
         /* Content Area */
@@ -643,21 +636,14 @@
         <!-- Header -->
         <div class="header">
             <div class="logo-section">
-                <div class="amd-logo">AMD</div>
+                <div class="amd-logo">
+                    <img src="assets/images/AMD_Logo.png" alt="AMD Logo" class="amd-logo-img">
+                </div>
                 <div class="tagline">INNOVATION. PERFORMANCE. LEADERSHIP</div>
             </div>
             <div class="header-stats">
-                <div class="header-stat">
-                    <span class="header-stat-value">$22.7B</span>
-                    <span class="header-stat-label">REVENUE 2023</span>
-                </div>
-                <div class="header-stat">
-                    <span class="header-stat-value">28,000+</span>
-                    <span class="header-stat-label">EMPLOYEES</span>
-                </div>
-                <div class="header-stat">
-                    <span class="header-stat-label">Founded 1969 • Santa Clara, CA</span>
-                </div>
+                <div class="header-info"><strong>Name: Danish Sayyad</strong></div>
+                <div class="header-info"><strong>PRN: 124B1B100</strong></div>
             </div>
         </div>
 
@@ -776,23 +762,6 @@
                 <div class="card">
                     <div class="card-title">Competitive Position</div>
                     <canvas id="compChart"></canvas>
-                    <div class="advantages-grid">
-                        <div class="advantage-box">
-                            <div class="advantage-icon">⚡</div>
-                            <div class="advantage-title">Performance</div>
-                            <div class="advantage-desc">Leadership in perf/watt</div>
-                        </div>
-                        <div class="advantage-box">
-                            <div class="advantage-icon">💰</div>
-                            <div class="advantage-title">Value</div>
-                            <div class="advantage-desc">Best price/performance</div>
-                        </div>
-                        <div class="advantage-box">
-                            <div class="advantage-icon">🔬</div>
-                            <div class="advantage-title">Innovation</div>
-                            <div class="advantage-desc">Chiplet design leader</div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="card">
