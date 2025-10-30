@@ -677,3 +677,345 @@ canvas {
 .footer-text {
     opacity: 0.7;
 }
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 5px;
+        align-items: flex-start;
+    }
+
+    .infographic-container {
+        width: 100%;
+        min-height: auto;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Header */
+    .header {
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .header::before {
+        display: none;
+    }
+
+    .logo-section {
+        margin-bottom: 10px;
+    }
+
+    .amd-logo {
+        height: 40px;
+    }
+
+    .tagline {
+        font-size: 7px;
+    }
+
+    .header-stats {
+        text-align: center;
+    }
+
+    .header-info {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    /* Content */
+    .content {
+        padding: 8px 10px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+        padding: 10px 12px;
+    }
+
+    .section-title {
+        font-size: 10px;
+    }
+
+    .timeline {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 0;
+    }
+
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-item {
+        min-width: calc(50% - 4px);
+        flex: 1 1 calc(50% - 4px);
+    }
+
+    .timeline-year {
+        font-size: 11px;
+    }
+
+    .timeline-event {
+        font-size: 6px;
+    }
+
+    /* Grids */
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 8px;
+        gap: 5px;
+    }
+
+    .metric-item {
+        padding: 6px;
+    }
+
+    .metric-value {
+        font-size: 14px;
+    }
+
+    .metric-label {
+        font-size: 5.5px;
+    }
+
+    /* Product Showcase */
+    .product-showcase {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px;
+        gap: 6px;
+    }
+
+    .product-card {
+        padding: 10px 6px;
+    }
+
+    .product-icon {
+        font-size: 24px;
+    }
+
+    .product-name {
+        font-size: 11px;
+    }
+
+    .product-segment {
+        font-size: 6px;
+    }
+
+    .product-stat {
+        font-size: 5px;
+    }
+
+    /* Cards */
+    .card {
+        padding: 10px;
+    }
+
+    .card-title {
+        font-size: 9px;
+        margin-bottom: 6px;
+    }
+
+    /* Market Grid */
+    .market-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .market-title {
+        font-size: 6px;
+    }
+
+    /* Strategy */
+    .strategy-grid {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .rad-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .rad-circle strong {
+        font-size: 24px;
+    }
+
+    .rad-circle small {
+        font-size: 6px;
+    }
+
+    .strategy-pillars {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        width: 100%;
+    }
+
+    .pillar-box {
+        padding: 6px;
+    }
+
+    .pillar-icon {
+        font-size: 16px;
+    }
+
+    .pillar-text {
+        font-size: 5px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .stat-box {
+        padding: 8px 6px;
+    }
+
+    .stat-number {
+        font-size: 18px;
+    }
+
+    .stat-label {
+        font-size: 6px;
+    }
+
+    /* Map */
+    .map-container {
+        height: 100px;
+    }
+
+    .map-text {
+        font-size: 9px;
+        padding: 3px 8px;
+    }
+
+    .location-label {
+        font-size: 5px;
+        padding: 1px 3px;
+    }
+
+    .map-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Roadmap Bottom */
+    .roadmap-bottom {
+        padding: 15px;
+    }
+
+    .roadmap-title {
+        font-size: 10px;
+        margin-bottom: 10px;
+    }
+
+    .roadmap-timeline {
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px 0;
+    }
+
+    .roadmap-item {
+        font-size: 8px;
+        width: 100%;
+    }
+
+    .roadmap-year {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .roadmap-arrow {
+        transform: rotate(90deg);
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .roadmap-partners {
+        font-size: 7px;
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+
+    .roadmap-partners strong {
+        font-size: 8px;
+    }
+
+    /* Charts */
+    canvas {
+        max-height: 150px !important;
+    }
+
+    /* Advantages */
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .advantage-box {
+        padding: 6px;
+    }
+
+    .advantage-icon {
+        font-size: 16px;
+    }
+
+    .advantage-title {
+        font-size: 6px;
+    }
+
+    .advantage-desc {
+        font-size: 5px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 6px 10px;
+        font-size: 5px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .footer-logo {
+        font-size: 12px;
+    }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .infographic-container {
+        width: 95%;
+    }
+
+    .header {
+        padding: 18px 20px;
+    }
+
+    .content {
+        padding: 10px 12px;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .product-showcase {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .roadmap-timeline {
+        flex-wrap: wrap;
+    }
+}
