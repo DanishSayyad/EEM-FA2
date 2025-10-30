@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMD Corporate Infographic - Professional Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Inline SVG favicon to avoid browser requesting /favicon.ico and causing 404 -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a1a1a'/%3E%3Ctext x='50' y='60' font-size='36' text-anchor='middle' fill='%23ED1C24' font-family='Roboto, sans-serif'%3EAMD%3C/text%3E%3C/svg%3E">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @media print {
+            body { margin: 0; padding: 0; }
+            .infographic-container { box-shadow: none; }
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .infographic-container {
+            width: 210mm;
+            height: 297mm;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(237, 28, 36, 0.1));
+        }
+
+        .logo-section {
+            z-index: 1;
+        }
+
+        .amd-logo {
+            font-size: 48px;
+            font-weight: 900;
+            color: #ED1C24;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 9px;
+            letter-spacing: 2px;
+            margin-top: 5px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .header-stats {
+            text-align: right;
+            z-index: 1;
+        }
+
+        .header-stat {
+            margin-bottom: 4px;
+        }
+
+        .header-stat-value {
+            color: #ED1C24;
+            font-size: 16px;
+            font-weight: 900;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .header-stat-label {
+            font-size: 8px;
+            opacity: 0.8;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 12px 15px;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: white;
+            padding: 12px 18px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #ED1C24;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 14px;
+            background: #ED1C24;
+            margin-right: 8px;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 12px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ED1C24 0%, #00BCD4 50%, #4CAF50 100%);
+        }
+
+        .timeline-item {
+            text-align: center;
+            background: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            z-index: 1;
+            min-width: 75px;
+            border: 2px solid #f5f5f5;
+            transition: transform 0.2s;
+        }
+
+        .timeline-year {
+            font-size: 13px;
+            font-weight: 900;
+            color: #ED1C24;
+            margin-bottom: 2px;
+        }
+
+        .timeline-event {
+            font-size: 7px;
+            color: #333;
+            line-height: 1.3;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 0.8fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #ED1C24;
+            padding-bottom: 4px;
+        }
+
+        /* Market Share Section */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .market-card {
+            text-align: center;
+        }
+
+        .market-title {
+            font-size: 7px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        /* Product Portfolio */
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #ED1C24 0%, #b81419 100%);
+            color: white;
+            padding: 12px 8px;
+            border-radius: 6px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(237, 28, 36, 0.3);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+        }
+
+        .product-icon {
+            font-size: 28px;
+            margin-bottom: 6px;
+            position: relative;
+        }
+
+        .product-name {
+            font-size: 13px;
+            font-weight: 900;
+            margin-bottom: 3px;
+            position: relative;
+        }
+
+        .product-segment {
+            font-size: 7px;
+            opacity: 0.9;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .product-stat {
+            font-size: 6px;
+            margin-top: 4px;
+            padding-top: 4px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            padding: 14px 10px;
+            border-radius: 6px;
+            text-align: center;
+            border-top: 3px solid #ED1C24;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ED1C24, #00BCD4);
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 900;
+            color: #ED1C24;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-label {
+            font-size: 7px;
+            opacity: 0.9;
+            line-height: 1.3;
+        }
+
+        /* Strategy Section */
+        .strategy-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .rad-circle {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #ED1C24 0%, #b81419 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 6px 15px rgba(237, 28, 36, 0.4);
+            position: relative;
+        }
+
+        .rad-circle::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .rad-circle strong {
+            font-size: 28px;
+            font-weight: 900;
+            z-index: 1;
+        }
+
+        .rad-circle small {
+            font-size: 7px;
+            margin-top: 2px;
+            z-index: 1;
+        }
+
+        .strategy-pillars {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+
+        .pillar-box {
+            background: #f5f5f5;
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+            border: 2px solid #ddd;
+        }
+
+        .pillar-icon {
+            font-size: 20px;
+            margin-bottom: 3px;
+        }
+
+        .pillar-text {
+            font-size: 6px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Map Section */
+        .map-container {
+            height: 130px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ED1C24;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(237, 28, 36, 0.6);
+            animation: pulse 2s infinite;
+        }
+
+        .map-dot::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(237, 28, 36, 0.2);
+            border-radius: 50%;
+            top: -5px;
+            left: -5px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.6; }
+        }
+
+        .map-text {
+            font-size: 11px;
+            font-weight: 700;
+            color: #2e7d32;
+            z-index: 1;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .location-label {
+            position: absolute;
+            font-size: 6px;
+            font-weight: 700;
+            color: #1a1a1a;
+            background: white;
+            padding: 2px 4px;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            background: linear-gradient(135deg, #00BCD4 0%, #0097a7 100%);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 6px;
+            box-shadow: 0 3px 12px rgba(0, 188, 212, 0.4);
+        }
+
+        .roadmap-title {
+            font-size: 10px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 4px;
+        }
+
+        .roadmap-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .roadmap-item {
+            flex: 1;
+            text-align: center;
+            font-size: 8px;
+        }
+
+        .roadmap-year {
+            font-size: 11px;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+
+        .roadmap-arrow {
+            font-size: 24px;
+            margin: 0 8px;
+            opacity: 0.8;
+        }
+
+        .roadmap-partners {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 7px;
+            text-align: center;
+        }
+
+        .roadmap-partners strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 8px;
+        }
+
+        /* Key Metrics */
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 8px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .metric-value {
+            font-size: 16px;
+            font-weight: 900;
+            color: #ED1C24;
+            margin-bottom: 3px;
+        }
+
+        .metric-label {
+            font-size: 6px;
+            color: #555;
+            line-height: 1.2;
+        }
+
+        /* Competitive Advantages */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .advantage-box {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+            border-left: 3px solid #ED1C24;
+        }
+
+        .advantage-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .advantage-title {
+            font-size: 7px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .advantage-desc {
+            font-size: 6px;
+            color: #666;
+            line-height: 1.2;
+        }
+
+        /* Chart Containers */
+        canvas {
+            max-height: 110px !important;
+        }
+
+        .mini-chart canvas {
+            max-height: 75px !important;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            padding: 8px 15px;
+            text-align: center;
+            font-size: 6px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 14px;
+            font-weight: 900;
+            color: #ED1C24;
+        }
+
+        .footer-text {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="amd-logo">AMD</div>
+                <div class="tagline">INNOVATION. PERFORMANCE. LEADERSHIP</div>
+            </div>
+            <div class="header-stats">
+                <div class="header-stat">
+                    <span class="header-stat-value">$22.7B</span>
+                    <span class="header-stat-label">REVENUE 2023</span>
+                </div>
+                <div class="header-stat">
+                    <span class="header-stat-value">28,000+</span>
+                    <span class="header-stat-label">EMPLOYEES</span>
+                </div>
+                <div class="header-stat">
+                    <span class="header-stat-label">Founded 1969 • Santa Clara, CA</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Timeline -->
+            <div class="timeline-section">
+                <div class="section-title">COMPANY EVOLUTION (1969-2024)</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1969</div>
+                        <div class="timeline-event">Company Founded</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000</div>
+                        <div class="timeline-event">Athlon Launch</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2006</div>
+                        <div class="timeline-event">ATI Acquired</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017</div>
+                        <div class="timeline-event">Ryzen/EPYC Era</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021</div>
+                        <div class="timeline-event">Xilinx $49B</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-event">MI300 Launch</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-event">AI PC Era</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Metrics Row -->
+            <div class="metrics-row">
+                <div class="metric-item">
+                    <div class="metric-value">30.4%</div>
+                    <div class="metric-label">Desktop CPU Market Share</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">19%</div>
+                    <div class="metric-label">Discrete GPU Market</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">+94%</div>
+                    <div class="metric-label">Data Center Growth YoY</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">25%</div>
+                    <div class="metric-label">R&D Investment</div>
+                </div>
+            </div>
+
+            <!-- Market Share & Revenue -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">Market Share Analysis (Q4 2023)</div>
+                    <div class="market-grid">
+                        <div class="market-card">
+                            <div class="market-title">Desktop CPU</div>
+                            <canvas id="cpuChart"></canvas>
+                        </div>
+                        <div class="market-card">
+                            <div class="market-title">Discrete GPU</div>
+                            <canvas id="gpuChart"></canvas>
+                        </div>
+                        <div class="market-card">
+                            <div class="market-title">Server CPU</div>
+                            <canvas id="serverChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Revenue Growth (USD Billions)</div>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Product Portfolio -->
+            <div class="product-showcase">
+                <div class="product-card">
+                    <div class="product-icon">🖥️</div>
+                    <div class="product-name">RYZEN</div>
+                    <div class="product-segment">Consumer CPUs</div>
+                    <div class="product-stat">Zen 4 Architecture</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🎮</div>
+                    <div class="product-name">RADEON</div>
+                    <div class="product-segment">Gaming GPUs</div>
+                    <div class="product-stat">RDNA 3 Technology</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">⚙️</div>
+                    <div class="product-name">EPYC</div>
+                    <div class="product-segment">Data Center CPUs</div>
+                    <div class="product-stat">Genoa / Bergamo</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🧠</div>
+                    <div class="product-name">INSTINCT</div>
+                    <div class="product-segment">AI Accelerators</div>
+                    <div class="product-stat">MI300X Leading AI</div>
+                </div>
+            </div>
+
+            <!-- Competitive Analysis & Strategy -->
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title">Competitive Position</div>
+                    <canvas id="compChart"></canvas>
+                    <div class="advantages-grid">
+                        <div class="advantage-box">
+                            <div class="advantage-icon">⚡</div>
+                            <div class="advantage-title">Performance</div>
+                            <div class="advantage-desc">Leadership in perf/watt</div>
+                        </div>
+                        <div class="advantage-box">
+                            <div class="advantage-icon">💰</div>
+                            <div class="advantage-title">Value</div>
+                            <div class="advantage-desc">Best price/performance</div>
+                        </div>
+                        <div class="advantage-box">
+                            <div class="advantage-icon">🔬</div>
+                            <div class="advantage-title">Innovation</div>
+                            <div class="advantage-desc">Chiplet design leader</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Business Strategy</div>
+                    <div class="strategy-grid">
+                        <div class="rad-circle">
+                            <strong>25%</strong>
+                            <small>R&D INVEST</small>
+                            <small>(OF REVENUE)</small>
+                        </div>
+                        <div class="strategy-pillars">
+                            <div class="pillar-box">
+                                <div class="pillar-icon">🔬</div>
+                                <div class="pillar-text">RESEARCH</div>
+                            </div>
+                            <div class="pillar-box">
+                                <div class="pillar-icon">📊</div>
+                                <div class="pillar-text">DATA</div>
+                            </div>
+                            <div class="pillar-box">
+                                <div class="pillar-icon">⚙️</div>
+                                <div class="pillar-text">SCALE</div>
+                            </div>
+                            <div class="pillar-box">
+                                <div class="pillar-icon">🤝</div>
+                                <div class="pillar-text">PARTNERS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Global Footprint</div>
+                    <div class="map-container">
+                        <div class="map-dots">
+                            <div class="map-dot" style="top: 25%; left: 15%;"></div>
+                            <div class="map-dot" style="top: 20%; left: 50%;"></div>
+                            <div class="map-dot" style="top: 35%; left: 75%;"></div>
+                            <div class="map-dot" style="top: 65%; left: 25%;"></div>
+                            <div class="map-dot" style="top: 70%; left: 85%;"></div>
+                            <span class="location-label" style="top: 20%; left: 12%;">USA</span>
+                            <span class="location-label" style="top: 15%; left: 48%;">Europe</span>
+                            <span class="location-label" style="top: 30%; left: 73%;">Asia</span>
+                        </div>
+                        <div class="map-text">🌍 WORLDWIDE OPERATIONS</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Industry Leadership & Roadmap -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">Industry Leadership Metrics</div>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-number">28K+</div>
+                            <div class="stat-label">Global Employees</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">+115%</div>
+                            <div class="stat-label">Data Center Revenue Growth (2023)</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">$5.5B</div>
+                            <div class="stat-label">R&D Investment (2023)</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">30%</div>
+                            <div class="stat-label">Gaming Console Market Share</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap">
+                    <div class="roadmap-title">Future Technology Roadmap</div>
+                    <div class="roadmap-timeline">
+                        <div class="roadmap-item">
+                            <div class="roadmap-year">2025</div>
+                            Zen 5 CPUs<br>RDNA 4 GPUs<br>MI350 Series
+                        </div>
+                        <div class="roadmap-arrow">→</div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-year">2026</div>
+                            3nm Process<br>Advanced AI<br>Chiplet Evolution
+                        </div>
+                        <div class="roadmap-arrow">→</div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-year">2027+</div>
+                            Quantum Research<br>Photonics<br>Next-Gen AI
+                        </div>
+                    </div>
+                    <div class="roadmap-partners">
+                        <strong>Strategic Partnerships:</strong>
+                        Microsoft • Sony • Tesla • Meta • Oracle • Cloud Hyperscalers
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segment Performance -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">Revenue by Segment (2023)</div>
+                    <canvas id="segmentChart"></canvas>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Year-over-Year Growth Trends</div>
+                    <canvas id="growthChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">AMD</div>
+                <div class="footer-text">Advanced Micro Devices, Inc. • www.amd.com • Data as of Q4 2023</div>
+                <div class="footer-text">© 2024 AMD. All rights reserved.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart defaults
+        Chart.defaults.font.size = 7;
+        Chart.defaults.font.family = 'Roboto';
+        Chart.defaults.color = '#333';
+
+        // CPU Market Share
+        new Chart(document.getElementById('cpuChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['AMD', 'Intel'],
+                datasets: [{
+                    data: [30.4, 69.6],
+                    backgroundColor: ['#ED1C24', '#00BCD4'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 6 }, padding: 4, boxWidth: 8 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => ctx.label + ': ' + ctx.parsed + '%'
+                        }
+                    }
+                }
+            }
+        });
+
+        // GPU Market Share
+        new Chart(document.getElementById('gpuChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['AMD', 'NVIDIA'],
+                datasets: [{
+                    data: [19, 81],
+                    backgroundColor: ['#ED1C24', '#76b900'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 6 }, padding: 4, boxWidth: 8 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => ctx.label + ': ' + ctx.parsed + '%'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Server CPU Market Share
+        new Chart(document.getElementById('serverChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['AMD EPYC', 'Intel Xeon'],
+                datasets: [{
+                    data: [23.6, 76.4],
+                    backgroundColor: ['#ED1C24', '#00BCD4'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 6 }, padding: 4, boxWidth: 8 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => ctx.label + ': ' + ctx.parsed + '%'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Revenue Chart
+        new Chart(document.getElementById('revenueChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['2019', '2020', '2021', '2022', '2023', '2024E'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [6.73, 9.76, 16.43, 23.60, 22.68, 25.8],
+                    backgroundColor: ['#ED1C24', '#e63946', '#f77f00', '#fcbf49', '#06d6a0', '#118ab2'],
+                    borderRadius: 3,
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => ctx.dataset.label + ': ' + ctx.parsed.y + 'B'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: { size: 7 },
+                            callback: (val) => val + 'B'
+                        },
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    },
+                    x: {
+                        ticks: { font: { size: 7 } },
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Competitive Analysis Chart
+        new Chart(document.getElementById('compChart').getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: ['Performance', 'Efficiency', 'Value', 'Innovation', 'Ecosystem'],
+                datasets: [
+                    {
+                        label: 'AMD',
+                        data: [90, 95, 95, 90, 80],
+                        backgroundColor: 'rgba(237, 28, 36, 0.2)',
+                        borderColor: '#ED1C24',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#ED1C24'
+                    },
+                    {
+                        label: 'Competition',
+                        data: [85, 75, 70, 85, 95],
+                        backgroundColor: 'rgba(0, 188, 212, 0.2)',
+                        borderColor: '#00BCD4',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#00BCD4'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            font: { size: 6 },
+                            stepSize: 25
+                        },
+                        pointLabels: {
+                            font: { size: 7 }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 7 }, padding: 4, boxWidth: 10 }
+                    }
+                }
+            }
+        });
+
+        // Segment Revenue Chart
+        new Chart(document.getElementById('segmentChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Data Center', 'Client', 'Gaming', 'Embedded'],
+                datasets: [{
+                    data: [42, 28, 19, 11],
+                    backgroundColor: ['#ED1C24', '#00BCD4', '#4CAF50', '#FFC107'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { font: { size: 7 }, padding: 5, boxWidth: 10 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => ctx.label + ': ' + ctx.parsed + '%'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Growth Trends Chart
+        new Chart(document.getElementById('growthChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: ['Q1 2023', 'Q2 2023', 'Q3 2023', 'Q4 2023', 'Q1 2024', 'Q2 2024'],
+                datasets: [
+                    {
+                        label: 'Data Center',
+                        data: [1.3, 1.5, 1.6, 2.3, 2.8, 3.2],
+                        borderColor: '#ED1C24',
+                        backgroundColor: 'rgba(237, 28, 36, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Client',
+                        data: [0.7, 0.9, 1.0, 1.4, 1.5, 1.6],
+                        borderColor: '#00BCD4',
+                        backgroundColor: 'rgba(0, 188, 212, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Gaming',
+                        data: [0.9, 0.8, 0.9, 1.4, 1.3, 1.5],
+                        borderColor: '#4CAF50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                    plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 7 }, padding: 4, boxWidth: 10 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => ctx.dataset.label + ': ' + ctx.parsed.y + 'B'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: { size: 7 },
+                            callback: (val) => val + 'B'
+                        },
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    },
+                    x: {
+                        ticks: { font: { size: 6 } },
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
